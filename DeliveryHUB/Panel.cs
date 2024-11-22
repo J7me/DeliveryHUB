@@ -17,12 +17,13 @@ namespace DeliveryHUB
         {
             InitializeComponent();
 
+ 
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-           materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-   
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.LightGreen200, TextShade.WHITE);
+
 
         }
         private void UpdateFilterVisibility()
@@ -284,7 +285,7 @@ namespace DeliveryHUB
             }
         }
 
-        private void SwitchingTablesBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SwitchingTablesBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (SwitchingTablesBox.SelectedItem != null)
             {
@@ -729,11 +730,18 @@ namespace DeliveryHUB
             }
         }
 
-        private void FilterLabel_Click(object sender, EventArgs e)
+ 
+
+        private void SwitchingTablesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (SwitchingTablesBox.SelectedItem != null)
+            {
+                string selectedTable = SwitchingTablesBox.SelectedItem.ToString();
+                LoadData(selectedTable);
+            }
+            // Обновляем видимость фильтров
+            UpdateFilterVisibility();
         }
-
 
     }
 
