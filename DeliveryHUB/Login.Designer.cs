@@ -28,55 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lbUsername = new System.Windows.Forms.Label();
-            this.lbPassword = new System.Windows.Forms.Label();
             this.lbMessError = new System.Windows.Forms.Label();
             this.btnRegister = new MaterialSkin.Controls.MaterialButton();
             this.btnLogin = new MaterialSkin.Controls.MaterialButton();
             this.txtUsername = new MaterialSkin.Controls.MaterialTextBox2();
             this.txtPassword = new MaterialSkin.Controls.MaterialTextBox();
+            this.lbUsername = new MaterialSkin.Controls.MaterialLabel();
+            this.lbPassword = new MaterialSkin.Controls.MaterialLabel();
+            this.lblTitle = new MaterialSkin.Controls.MaterialLabel();
+            this.ThemeSwitcher = new MaterialSkin.Controls.MaterialSwitch();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(216, 9);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(73, 13);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Авторизация";
-            // 
-            // lbUsername
-            // 
-            this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(205, 32);
-            this.lbUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(103, 13);
-            this.lbUsername.TabIndex = 1;
-            this.lbUsername.Text = "Имя пользователя";
-            // 
-            // lbPassword
-            // 
-            this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(225, 123);
-            this.lbPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(45, 13);
-            this.lbPassword.TabIndex = 2;
-            this.lbPassword.Text = "Пароль";
             // 
             // lbMessError
             // 
             this.lbMessError.AutoSize = true;
             this.lbMessError.ForeColor = System.Drawing.Color.Red;
-            this.lbMessError.Location = new System.Drawing.Point(140, 299);
+            this.lbMessError.Location = new System.Drawing.Point(54, 434);
             this.lbMessError.Name = "lbMessError";
-            this.lbMessError.Size = new System.Drawing.Size(35, 13);
+            this.lbMessError.Size = new System.Drawing.Size(29, 13);
             this.lbMessError.TabIndex = 7;
-            this.lbMessError.Text = "label1";
+            this.lbMessError.Text = "Error";
             // 
             // btnRegister
             // 
@@ -85,7 +56,7 @@
             this.btnRegister.Depth = 0;
             this.btnRegister.HighEmphasis = true;
             this.btnRegister.Icon = null;
-            this.btnRegister.Location = new System.Drawing.Point(143, 241);
+            this.btnRegister.Location = new System.Drawing.Point(143, 374);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRegister.Name = "btnRegister";
@@ -105,7 +76,7 @@
             this.btnLogin.Depth = 0;
             this.btnLogin.HighEmphasis = true;
             this.btnLogin.Icon = null;
-            this.btnLogin.Location = new System.Drawing.Point(228, 193);
+            this.btnLogin.Location = new System.Drawing.Point(200, 326);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
@@ -127,7 +98,7 @@
             this.txtUsername.Font = new System.Drawing.Font("MS Gothic", 3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtUsername.HideSelection = true;
             this.txtUsername.LeadingIcon = null;
-            this.txtUsername.Location = new System.Drawing.Point(169, 62);
+            this.txtUsername.Location = new System.Drawing.Point(147, 194);
             this.txtUsername.MaxLength = 32767;
             this.txtUsername.MouseState = MaterialSkin.MouseState.OUT;
             this.txtUsername.Name = "txtUsername";
@@ -139,10 +110,9 @@
             this.txtUsername.SelectionLength = 0;
             this.txtUsername.SelectionStart = 0;
             this.txtUsername.ShortcutsEnabled = true;
-            this.txtUsername.Size = new System.Drawing.Size(178, 36);
+            this.txtUsername.Size = new System.Drawing.Size(191, 36);
             this.txtUsername.TabIndex = 11;
             this.txtUsername.TabStop = false;
-            this.txtUsername.Text = "bnvn";
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsername.TrailingIcon = null;
             this.txtUsername.UseAccent = false;
@@ -154,33 +124,89 @@
             this.txtPassword.AnimateReadOnly = false;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Depth = 0;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPassword.LeadingIcon = null;
-            this.txtPassword.Location = new System.Drawing.Point(171, 148);
+            this.txtPassword.Location = new System.Drawing.Point(147, 266);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(176, 36);
+            this.txtPassword.Size = new System.Drawing.Size(191, 36);
             this.txtPassword.TabIndex = 12;
-            this.txtPassword.Text = "gffhfg";
+            this.txtPassword.Text = "";
             this.txtPassword.TrailingIcon = null;
             this.txtPassword.UseAccent = false;
             this.txtPassword.UseTallSize = false;
+            // 
+            // lbUsername
+            // 
+            this.lbUsername.AutoSize = true;
+            this.lbUsername.Depth = 0;
+            this.lbUsername.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lbUsername.Location = new System.Drawing.Point(150, 160);
+            this.lbUsername.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbUsername.Name = "lbUsername";
+            this.lbUsername.Size = new System.Drawing.Size(46, 19);
+            this.lbUsername.TabIndex = 13;
+            this.lbUsername.Text = "Логин";
+            // 
+            // lbPassword
+            // 
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.Depth = 0;
+            this.lbPassword.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lbPassword.Location = new System.Drawing.Point(151, 233);
+            this.lbPassword.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(57, 19);
+            this.lbPassword.TabIndex = 14;
+            this.lbPassword.Text = "Пароль";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblTitle.Depth = 0;
+            this.lblTitle.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            this.lblTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblTitle.Location = new System.Drawing.Point(176, 97);
+            this.lblTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(123, 24);
+            this.lblTitle.TabIndex = 15;
+            this.lblTitle.Text = "Авторизация";
+            // 
+            // ThemeSwitcher
+            // 
+            this.ThemeSwitcher.AutoSize = true;
+            this.ThemeSwitcher.Depth = 0;
+            this.ThemeSwitcher.Location = new System.Drawing.Point(455, 64);
+            this.ThemeSwitcher.Margin = new System.Windows.Forms.Padding(0);
+            this.ThemeSwitcher.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ThemeSwitcher.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ThemeSwitcher.Name = "ThemeSwitcher";
+            this.ThemeSwitcher.Ripple = true;
+            this.ThemeSwitcher.Size = new System.Drawing.Size(173, 37);
+            this.ThemeSwitcher.TabIndex = 16;
+            this.ThemeSwitcher.Text = "materialSwitch1";
+            this.ThemeSwitcher.UseVisualStyleBackColor = true;
+            this.ThemeSwitcher.CheckedChanged += new System.EventHandler(this.ThemeSwitcher_CheckedChanged);
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 396);
+            this.ClientSize = new System.Drawing.Size(493, 515);
+            this.Controls.Add(this.ThemeSwitcher);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.lbUsername);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lbMessError);
-            this.Controls.Add(this.lbPassword);
-            this.Controls.Add(this.lbUsername);
-            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoginForm";
@@ -193,15 +219,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lbUsername;
-        private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.Label lbMessError;
         private MaterialSkin.Controls.MaterialButton btnRegister;
         private MaterialSkin.Controls.MaterialButton btnLogin;
         private MaterialSkin.Controls.MaterialTextBox2 txtUsername;
         private MaterialSkin.Controls.MaterialTextBox txtPassword;
+        private MaterialSkin.Controls.MaterialLabel lbUsername;
+        private MaterialSkin.Controls.MaterialLabel lbPassword;
+        private MaterialSkin.Controls.MaterialLabel lblTitle;
+        private MaterialSkin.Controls.MaterialSwitch ThemeSwitcher;
     }
 }
 

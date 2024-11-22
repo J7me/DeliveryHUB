@@ -1,16 +1,22 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DeliveryHUB
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MaterialForm
     {
         public LoginForm()
         {
             InitializeComponent();
             lbMessError.Visible = false; // Скрыть сообщение об ошибке при загрузке формы
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.LightGreen200, TextShade.WHITE);
         }
 
 
@@ -128,9 +134,21 @@ namespace DeliveryHUB
             lbMessError.Visible = true;
         }
 
-        private void materialButton1_Click(object sender, EventArgs e)
-        {
 
+        private void ThemeSwitcher_CheckedChanged(object sender, EventArgs e)
+        {
+            var materialSkinManager = MaterialSkinManager.Instance;
+
+            // Если чекбокс включён, устанавливаем тёмную тему
+            if (ThemeSwitcher.Checked)
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            }
+            else // Если выключен, устанавливаем светлую тему
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            }
         }
+
     }
 }
