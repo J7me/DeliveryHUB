@@ -4,8 +4,11 @@ using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
+using static DeliveryHUB.MainForm;
 
 namespace DeliveryHUB
 {
@@ -13,11 +16,112 @@ namespace DeliveryHUB
     {
         private BD db = new BD(); // Экземпляр подключения к базе данных
 
-        public MainForm()
+
+
+
+
+
+        public static class ThemeManager
+        {
+            public enum Theme
+            {
+                Light, Dark
+            }
+            private static Theme currentTheme = Theme.Light;
+            public static void ApplyTheme(Form form)
+            {
+                // Применяем тему к контролам
+                ApplyThemeToControls(form.Controls);
+
+                // Обновляем тему MaterialSkin
+                var materialSkinManager = MaterialSkinManager.Instance;
+                if (currentTheme == Theme.Dark)
+                {
+                    form.BackColor = Color.FromArgb(45, 45, 45);
+                    form.ForeColor = Color.White;
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                }
+                else
+                {
+                    form.BackColor = Color.FromArgb(233, 233, 233);
+                    form.ForeColor = Color.FromArgb(50, 50, 50);
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                }
+            }
+            public static void ToggleTheme(Form form)
+            {
+                currentTheme = currentTheme == Theme.Light ? Theme.Dark : Theme.Light;
+
+                // Применяем тему
+                ApplyTheme(form);
+
+            }
+            private static void ApplyThemeToControls(Control.ControlCollection controls)
+            {
+                foreach (Control control in controls)
+                {
+                    switch (control)
+                    {
+                        case Button button:
+                            ApplyThemeToButton(button);
+                            break;
+                        //case Label label:
+                        //    ApplyThemeToLabel(label); break;
+                        case TextBox textBox:
+                            ApplyThemeToTextBox(textBox); break;
+                        case DataGridView dataGridView:
+                            ApplyThemeToDataGridView(dataGridView); break;
+                        //case ComboBox comboBox:
+                        //    ApplyThemeToComboBox(comboBox); break;
+                        case Panel panel:
+                            panel.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(55, 55, 55) : Color.FromArgb(245, 245, 245); break;
+                        case GroupBox groupBox:
+                            groupBox.ForeColor = currentTheme == Theme.Dark ? Color.White : Color.FromArgb(50, 50, 50); break;
+                    }
+                    if (control.Controls.Count > 0)
+                    {
+                        ApplyThemeToControls(control.Controls);
+                    }
+                }
+            }
+            private static void ApplyThemeToButton(Button button)
+            {
+                button.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.FromArgb(72, 61, 139);
+                button.ForeColor = currentTheme == Theme.Dark ? Color.White : Color.White; button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+            }
+            private static void ApplyThemeToLabel(Label label)
+            {
+                //label.ForeColor = currentTheme == Theme.Dark ? Color.White : Color.Black;
+            }
+            private static void ApplyThemeToTextBox(TextBox textBox)
+            {
+                textBox.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.White; textBox.ForeColor = currentTheme == Theme.Dark ? Color.White : Color.FromArgb(50, 50, 50);
+                textBox.BorderStyle = BorderStyle.FixedSingle;
+            }
+            private static void ApplyThemeToDataGridView(DataGridView dataGridView)
+            {
+                dataGridView.BackgroundColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.FromArgb(242, 242, 242);
+               dataGridView.DefaultCellStyle.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.White; dataGridView.DefaultCellStyle.ForeColor = currentTheme == Theme.Dark ? Color.FromArgb(242, 242, 242) : Color.FromArgb(50, 50, 50);
+                dataGridView.DefaultCellStyle.SelectionBackColor = currentTheme == Theme.Dark ? Color.FromArgb(100, 100, 100) : Color.FromArgb(176, 224, 230); dataGridView.DefaultCellStyle.SelectionForeColor = currentTheme == Theme.Dark ? Color.FromArgb(242, 242, 242) : Color.FromArgb(50, 50, 50);
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.FromArgb(72, 61, 139);
+                dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = currentTheme == Theme.Dark ? Color.FromArgb(242, 242, 242) : Color.FromArgb(242, 242, 242);
+                dataGridView.GridColor = currentTheme == Theme.Dark ? Color.Gray : Color.LightGray;
+            }
+            private static void ApplyThemeToComboBox(ComboBox comboBox)
+            {
+                //comboBox.BackColor = currentTheme == Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.White;
+                //comboBox.ForeColor = currentTheme == Theme.Dark ? Color.White : Color.Black;
+            }
+        }
+    
+ 
+
+    public MainForm()
         {
             InitializeComponent();
 
- 
+            ThemeManager.ApplyTheme(this);
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -26,6 +130,7 @@ namespace DeliveryHUB
 
 
         }
+
         private void UpdateFilterVisibility()
         {
             // Проверяем, выбрана ли таблица Orders
@@ -40,6 +145,8 @@ namespace DeliveryHUB
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "deliveryHUBDataSet.Orders". При необходимости она может быть перемещена или удалена.
+            this.ordersTableAdapter.Fill(this.deliveryHUBDataSet.Orders);
             PopulateTableList(); // Заполняем список таблиц в ComboBox
             LoadPickupPoints();  // Загружаем адреса из PickupPoints в ComboBox
             LoadStatusOrders();  // Загружаем статусы заказов в ComboBox
@@ -76,7 +183,7 @@ namespace DeliveryHUB
                 }
 
                 if (SwitchingTablesBox.Items.Count > 0)
-                    SwitchingTablesBox.SelectedIndex = 4; // Выбираем пятую таблицу по умолчанию
+                    SwitchingTablesBox.SelectedIndex = 5; // Выбираем пятую таблицу по умолчанию
             }
             catch (Exception ex)
             {
@@ -108,17 +215,23 @@ namespace DeliveryHUB
                 // Устанавливаем источник данных
                 dataGridViewMain.DataSource = table;
                 dataGridViewMain.AllowUserToAddRows = false;
+
                 // Делаем колонку с первичным ключом только для чтения
                 if (!string.IsNullOrEmpty(primaryKeyColumn) && dataGridViewMain.Columns.Contains(primaryKeyColumn))
                 {
                     dataGridViewMain.Columns[primaryKeyColumn].ReadOnly = true;
-                    dataGridViewMain.Columns[primaryKeyColumn].DefaultCellStyle.BackColor = System.Drawing.Color.White; // Устанавливаем серый цвет
-                    dataGridViewMain.Columns[primaryKeyColumn].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;   // Устанавливаем темно-серый цвет текста
-                    dataGridViewMain.Columns[primaryKeyColumn].HeaderCell.Style.BackColor = System.Drawing.Color.DarkRed; // Устанавливаем серый цвет заголовка
-
+                    //dataGridViewMain.Columns[primaryKeyColumn].DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                    //dataGridViewMain.Columns[primaryKeyColumn].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    //dataGridViewMain.Columns[primaryKeyColumn].HeaderCell.Style.BackColor = System.Drawing.Color.DarkRed;
                 }
 
-                dataGridViewMain.AutoResizeColumns(); // Автоматическое изменение размера колонок
+                // Устанавливаем размер шрифта заголовков всех колонок
+                foreach (DataGridViewColumn column in dataGridViewMain.Columns)
+                {
+                    column.HeaderCell.Style.Font = new System.Drawing.Font("Mongolian Baiti", 20, System.Drawing.FontStyle.Italic); // Устанавливаем размер шрифта для заголовка
+                }
+
+                // Применяем другие настройки
                 PopulateSortColumns();
                 ApplySorting(); // Применяем сохраненную сортировку
 
@@ -132,6 +245,7 @@ namespace DeliveryHUB
                 db.closeConnection();
             }
         }
+
 
 
 
@@ -743,6 +857,11 @@ namespace DeliveryHUB
             UpdateFilterVisibility();
         }
 
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme(this);
+
+        }
     }
 
     // Класс Prompt

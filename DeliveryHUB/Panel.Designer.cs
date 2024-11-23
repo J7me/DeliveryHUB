@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.RecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,23 +49,60 @@
             this.cmbSortTable = new MaterialSkin.Controls.MaterialComboBox();
             this.FilterLabel = new MaterialSkin.Controls.MaterialLabel();
             this.SortLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.deliveryHUBDataSet = new DeliveryHUB.DeliveryHUBDataSet();
+            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ordersTableAdapter = new DeliveryHUB.DeliveryHUBDataSetTableAdapters.OrdersTableAdapter();
+            this.ordersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.ToolbarMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveryHUBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMain
             // 
+            this.dataGridViewMain.AllowUserToOrderColumns = true;
             this.dataGridViewMain.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewMain.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewMain.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewMain.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.305F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMain.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridViewMain.Location = new System.Drawing.Point(3, 346);
+            this.dataGridViewMain.EnableHeadersVisualStyles = false;
+            this.dataGridViewMain.GridColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewMain.Location = new System.Drawing.Point(41, 318);
             this.dataGridViewMain.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewMain.Name = "dataGridViewMain";
-            this.dataGridViewMain.RowHeadersWidth = 62;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewMain.RowHeadersWidth = 35;
             this.dataGridViewMain.RowTemplate.Height = 28;
-            this.dataGridViewMain.Size = new System.Drawing.Size(976, 317);
+            this.dataGridViewMain.Size = new System.Drawing.Size(975, 366);
             this.dataGridViewMain.TabIndex = 2;
             this.dataGridViewMain.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMain_CellEndEdit);
             this.dataGridViewMain.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMain_CellValueChanged);
@@ -124,7 +164,7 @@
             this.ToolbarMenuStrip.Location = new System.Drawing.Point(3, 64);
             this.ToolbarMenuStrip.Name = "ToolbarMenuStrip";
             this.ToolbarMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.ToolbarMenuStrip.Size = new System.Drawing.Size(976, 24);
+            this.ToolbarMenuStrip.Size = new System.Drawing.Size(1238, 24);
             this.ToolbarMenuStrip.TabIndex = 1;
             this.ToolbarMenuStrip.Text = "menuStrip2";
             // 
@@ -141,7 +181,7 @@
             this.ToolMenuStrip.Location = new System.Drawing.Point(3, 88);
             this.ToolMenuStrip.Name = "ToolMenuStrip";
             this.ToolMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.ToolMenuStrip.Size = new System.Drawing.Size(976, 24);
+            this.ToolMenuStrip.Size = new System.Drawing.Size(1238, 24);
             this.ToolMenuStrip.TabIndex = 0;
             this.ToolMenuStrip.Text = "ToolMenuStrip";
             // 
@@ -269,11 +309,51 @@
             this.SortLabel.TabIndex = 14;
             this.SortLabel.Text = "Сортировка";
             // 
+            // deliveryHUBDataSet
+            // 
+            this.deliveryHUBDataSet.DataSetName = "DeliveryHUBDataSet";
+            this.deliveryHUBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ordersBindingSource
+            // 
+            this.ordersBindingSource.DataMember = "Orders";
+            this.ordersBindingSource.DataSource = this.deliveryHUBDataSet;
+            // 
+            // ordersTableAdapter
+            // 
+            this.ordersTableAdapter.ClearBeforeFill = true;
+            // 
+            // ordersBindingSource1
+            // 
+            this.ordersBindingSource1.DataMember = "Orders";
+            this.ordersBindingSource1.DataSource = this.deliveryHUBDataSet;
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(857, 154);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(158, 36);
+            this.materialButton1.TabIndex = 15;
+            this.materialButton1.Text = "materialButton1";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 666);
+            this.ClientSize = new System.Drawing.Size(1244, 809);
+            this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.SortLabel);
             this.Controls.Add(this.FilterLabel);
             this.Controls.Add(this.cmbSortTable);
@@ -283,6 +363,7 @@
             this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.ToolMenuStrip);
             this.Controls.Add(this.ToolbarMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MainMenuStrip = this.ToolMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -294,6 +375,9 @@
             this.ToolbarMenuStrip.ResumeLayout(false);
             this.ToolbarMenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveryHUBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +401,10 @@
         private MaterialSkin.Controls.MaterialComboBox cmbSortTable;
         private MaterialSkin.Controls.MaterialLabel FilterLabel;
         private MaterialSkin.Controls.MaterialLabel SortLabel;
+        private DeliveryHUBDataSet deliveryHUBDataSet;
+        private System.Windows.Forms.BindingSource ordersBindingSource;
+        private DeliveryHUBDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter;
+        private System.Windows.Forms.BindingSource ordersBindingSource1;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
     }
 }

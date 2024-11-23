@@ -181,15 +181,14 @@
             // 
             this.ThemeSwitcher.AutoSize = true;
             this.ThemeSwitcher.Depth = 0;
-            this.ThemeSwitcher.Location = new System.Drawing.Point(455, 64);
+            this.ThemeSwitcher.Location = new System.Drawing.Point(470, 64);
             this.ThemeSwitcher.Margin = new System.Windows.Forms.Padding(0);
             this.ThemeSwitcher.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ThemeSwitcher.MouseState = MaterialSkin.MouseState.HOVER;
             this.ThemeSwitcher.Name = "ThemeSwitcher";
             this.ThemeSwitcher.Ripple = true;
-            this.ThemeSwitcher.Size = new System.Drawing.Size(173, 37);
+            this.ThemeSwitcher.Size = new System.Drawing.Size(58, 37);
             this.ThemeSwitcher.TabIndex = 16;
-            this.ThemeSwitcher.Text = "materialSwitch1";
             this.ThemeSwitcher.UseVisualStyleBackColor = true;
             this.ThemeSwitcher.CheckedChanged += new System.EventHandler(this.ThemeSwitcher_CheckedChanged);
             // 
@@ -197,7 +196,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 515);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(509, 554);
             this.Controls.Add(this.ThemeSwitcher);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lbPassword);
